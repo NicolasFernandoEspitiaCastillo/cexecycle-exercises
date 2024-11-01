@@ -1,63 +1,29 @@
-#Escriba un programa que pida al usuario ingresar la altura y el ancho de un rectángulo y lo dibuje utilizando asteriscos:
+#Desarolle un programa para estimar el valor de π usando la siguiente suma infinita:
 
-#Altura: 3
-#Ancho: 5
+#π=4(1−13+15−17+…)
+#La entrada del programa debe ser un número entero n
+# que indique cuántos términos de la suma se utilizará.
 
-#*****
-#*****
-#*****
-#Escriba un programa que dibuje el triángulo del tamaño indicado por el usuario de acuerdo al ejemplo:
-
-#Altura: 5
-
-#*
-#**
-#***
-#****
-#*****
-#Escriba un programa que dibuje el hexágono del tamaño indicado por el usuario de acuerdo al ejemplo:
-
-#Lado: 4
-
-#   ****
-#  ******
-# ********
-#**********
-# ********
-#  ******
-#   ****
+#n: 3
+#3.466666666666667
+#n: 1000
+#3.140592653839794
 
 
-#Programa para dibujar un rectangulo 
+# Solicitar al usuario que ingrese el número de términos
+n = int(input("n: "))
 
-# Solicitar al usuario que ingrese la altura y el ancho del rectángulo
-altura = int(input("Altura: "))
-ancho = int(input("Ancho: "))
+# Inicializar la suma
+suma = 0.0
 
-# Dibujar el rectángulo
-for _ in range(altura):
-    print('*' * ancho)
+# Calcular la suma de los términos
+for k in range(n):
+    término = (-1) ** k / (2 * k + 1)  # Término de la serie
+    suma += término
 
+# Estimar π
+pi_estimado = 4 * suma
 
-#Programa para dibujar un triangulo 
+# Mostrar el resultado
+print(pi_estimado)
 
-# Solicitar al usuario que ingrese la altura del triángulo
-altura = int(input("Altura: "))
-
-# Dibujar el triángulo
-for i in range(1, altura + 1):
-    print('*' * i)
-
-
-#Programa para dibujar un hexagono
-
-# Solicitar al usuario que ingrese el lado del hexágono
-lado = int(input("Lado: "))
-
-# Dibujar la parte superior del hexágono
-for i in range(lado):
-    print(' ' * (lado - i - 1) + '*' * (2 * i + 2))
-
-# Dibujar la parte inferior del hexágono
-for i in range(lado - 1):
-    print(' ' * (i + 1) + '*' * (2 * (lado - i - 1) + 2))
