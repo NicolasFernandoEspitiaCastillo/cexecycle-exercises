@@ -1,34 +1,30 @@
-#Desarrolle un programa que permita trabajar con las potencias fraccionales de dos, es decir:
+#El número de Euler, e ≈ 2,71828, puede ser representado como la siguiente suma infinita:
 
-#12,14,18,116,132,164,…
-#en forma decimal:
+#e=10!+11!+12!+13!+14!+…
+#Desarrolle un programa que entregue un valor aproximado de e, calculando esta suma hasta que la diferencia entre dos sumandos consecutivos sea menor que 0,0001.
 
-#0.5,0.25,0.125,0.0625,0.03125,0.015625,…
-#El programa debe mostrar tres columnas que contengan la siguiente información:
+#Recuerde que el factorial n! es el producto de los números de 1 a n.
 
-#Potencia  Fraccion  Suma
-#1         0.5       0.5
-#2         0.25      0.75
-#3         0.125     0.875
-#4         0.0625    0.9375
-#...       ...       ...
-#El programa debe terminar cuando la fracción decimal sea menor o igual a 0.000001.
 
+
+# Función para calcular el factorial
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
 
 # Inicializar variables
-potencia = 1
-fraccion = 0.5
+n = 10
 suma = 0.0
+diferencia = float('inf')
 
-# Encabezado de la tabla
-print(f"{'Potencia':<10}{'Fracción':<10}{'Suma':<10}")
+# Calcular la suma hasta que la diferencia sea menor que 0.0001
+while diferencia >= 0.0001:
+    nuevo_termino = 1 / factorial(n)
+    suma += nuevo_termino
+    diferencia = nuevo_termino
+    n += 1
 
-# Calcular y mostrar las potencias fraccionales de 2
-while fraccion > 0.000001:
-    suma += fraccion
-    print(f"{potencia:<10}{fraccion:<10.6f}{suma:<10.6f}")
-    
-    # Calcular la siguiente potencia y fracción
-    potencia += 1
-    fraccion /= 2  # equivalente a 1 / (2 ** potencia)
-
+# Imprimir el valor aproximado de e
+print(f"Valor aproximado de e: {suma:.5f}")
